@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwyre8hfvpif3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6hdar"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="MeshTexture" id="MeshTexture_ydtqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqp71"]
+size = Vector2(4, 4)
+
+[node name="Board" type="StaticBody2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("BoxMesh_6hdar")
+texture = SubResource("MeshTexture_ydtqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wqp71")

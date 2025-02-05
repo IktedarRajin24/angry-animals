@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://bls5tuh8xvo33"]
+
+[ext_resource type="Script" path="res://scripts/animal.gd" id="1_4kdp6"]
+[ext_resource type="Texture2D" uid="uid://c165avpqqfe8b" path="res://assets/player/parrot.png" id="1_fi8id"]
+[ext_resource type="AudioStream" uid="uid://pey7gdkju23s" path="res://assets/audio/stretch2.ogg" id="3_n5jhq"]
+[ext_resource type="Texture2D" uid="uid://dsoumw4nfybb5" path="res://assets/items/arrow.png" id="4_t0g8k"]
+[ext_resource type="AudioStream" uid="uid://srvcj6182wh0" path="res://assets/audio/catapult.ogg" id="5_8fk4b"]
+[ext_resource type="AudioStream" uid="uid://dhhvlrwvedf6i" path="res://assets/audio/kick_wood.ogg" id="6_4u1yy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p8wqy"]
+bounce = 0.35
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yivq8"]
+radius = 26.0768
+
+[node name="Animal" type="RigidBody2D"]
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_p8wqy")
+freeze = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_4kdp6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_fi8id")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yivq8")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(2.72, 2.72)
+
+[node name="stretch_audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_n5jhq")
+
+[node name="arrow" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_t0g8k")
+offset = Vector2(150, 0)
+
+[node name="launch_audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8fk4b")
+
+[node name="wood_audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_4u1yy")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
