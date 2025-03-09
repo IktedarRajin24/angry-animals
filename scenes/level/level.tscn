@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_70oyc"]
 [ext_resource type="Texture2D" uid="uid://deoubeetijwug" path="res://assets/scene/colored_castle.png" id="1_mkx2d"]
 [ext_resource type="PackedScene" uid="uid://ch6j8w0pp57hn" path="res://scenes/water/water.tscn" id="2_psiv0"]
-[ext_resource type="PackedScene" uid="uid://daal8fo1bbh8q" path="res://scenes/cup/cup.tscn" id="4_iwq6a"]
+[ext_resource type="PackedScene" uid="uid://dws2tcs5ubn3f" path="res://scenes/back_button/back_button.tscn" id="4_tjhwl"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_70oyc")
@@ -20,11 +20,8 @@ position = Vector2(160, 250)
 z_index = 1
 position = Vector2(2, 400)
 
-[node name="Cup" parent="." instance=ExtResource("4_iwq6a")]
-position = Vector2(508, 399)
-
-[node name="Cup2" parent="." instance=ExtResource("4_iwq6a")]
-position = Vector2(683, 316)
-
-[node name="Cup3" parent="." instance=ExtResource("4_iwq6a")]
-position = Vector2(879, 243)
+[node name="BackButton" parent="." instance=ExtResource("4_tjhwl")]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 120.0
+offset_bottom = 120.0
